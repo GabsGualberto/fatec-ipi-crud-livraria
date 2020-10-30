@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Livro } from '../livro.model';
 
 @Component({
   selector: 'app-livraria-lista',
   templateUrl: './livraria-lista.component.html',
   styleUrls: ['./livraria-lista.component.css']
 })
-export class LivrariaListaComponent implements OnInit {
+export class LivrariaListaComponent  {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  @Input() livros: Livro[]=[];
 }

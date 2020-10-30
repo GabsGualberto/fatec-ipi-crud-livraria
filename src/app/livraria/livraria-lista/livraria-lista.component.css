@@ -1,0 +1,16 @@
+:host{
+  margin-top: 1rem;
+  display: block;
+}
+mat-card{
+  max-width: 400px;
+  background-color: #ff4081;
+  color: #ffffff;
+  border-radius: 15px;
+  display: inline-block;
+  margin-left: 10px;
+  margin-bottom: 15px;
+}
+mat-card-title{
+  border-bottom: solid 1px #ffffff;
+}

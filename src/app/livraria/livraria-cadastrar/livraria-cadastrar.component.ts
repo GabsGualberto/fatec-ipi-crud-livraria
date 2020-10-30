@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Livro } from '../livro.model';
 
 @Component({
   selector: 'app-livraria-cadastrar',
@@ -12,5 +13,18 @@ export class LivrariaCadastrarComponent  {
   autor: string;
   paginas: number;
 
+  @Output() livroCadastrado = new EventEmitter<Livro>();
+
+  onCadastrarLivro(){
+    const livro: Livro = {
+      id: this.id,
+      titulo: this.titulo,
+      autor: this.autor,
+      paginas: this.paginas
+    }
+
+    this.livroCadastrado.emit(livro);
+    console.log("Programmed to work and not to feel");
+  }
 
 }

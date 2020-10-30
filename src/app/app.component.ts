@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Livro } from './livraria/livro.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'fatec-ipi-crud-livraria';
+  livros: Livro[] = [];
+  c
+  onCadastarLivro(livro){
+    console.log(livro);
+      this.livros.push(livro);
+  }
 }
