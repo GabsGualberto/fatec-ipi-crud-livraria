@@ -17,6 +17,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 
+//serviços
+import { livrosService } from './livraria/livro.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatButtonModule,
     MatTabsModule
   ],
-  providers: [],
+  providers: [livrosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

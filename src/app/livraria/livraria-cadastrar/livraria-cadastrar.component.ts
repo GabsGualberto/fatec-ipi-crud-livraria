@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { Livro } from '../livro.model';
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { livrosService } from '../livro.service';
+
 
 @Component({
   selector: 'app-livraria-cadastrar',
@@ -8,22 +10,13 @@ import { Livro } from '../livro.model';
 })
 export class LivrariaCadastrarComponent  {
 
-  id: number;
-  titulo: string;
-  autor: string;
-  paginas: number;
+  constructor(public livroService: livrosService){ }
 
-  @Output() livroCadastrado = new EventEmitter<Livro>();
-
-  onCadastrarLivro(){
-    const livro: Livro = {
-      id: this.id,
-      titulo: this.titulo,
-      autor: this.autor,
-      paginas: this.paginas
-    }
-
-    this.livroCadastrado.emit(livro);
+  onCadastrarLivro(form: NgForm){
+    const teste = form.value.id;
+    if(form.invalid) return;
+    this.livroService.cadastrarLivro(form.value.id,form.value.titulo,form.value.autor,form.value.paginas);
+    form.resetForm();
     console.log("Programmed to work and not to feel");
   }
 

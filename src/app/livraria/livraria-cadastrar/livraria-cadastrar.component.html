@@ -1,19 +1,26 @@
   <mat-card >
-    <mat-form-field >
-        <input type="text" matInput placeholder="id" [(ngModel)]="id">
+    <form (submit)="onCadastrarLivro(livroForm)" #livroForm="ngForm">
+      <mat-form-field >
+        <input type="text" matInput placeholder="id" ngModel name="id" #id="ngModel" required pattern="[0-9]{1,3}">
+        <mat-error *ngIf="id.invalid">Digite um id valido</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field>
-        <input type="text" matInput placeholder="titulo" [(ngModel)]="titulo">
+        <input type="text" matInput placeholder="titulo"  ngModel name="titulo" #titulo="ngModel" required>
+        <mat-error *ngIf="titulo.invalid">Digite um titulo valido</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field >
-        <input type="text" matInput placeholder="autor" [(ngModel)]="autor">
+        <input type="text" matInput placeholder="autor"  ngModel name="autor" #autor="ngModel" required>
+        <mat-error *ngIf="autor.invalid">Digite um autor valido</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field >
-      <input type="text" matInput placeholder="paginas" [(ngModel)]="paginas">
+      <input type="text" matInput placeholder="paginas"  ngModel name="paginas" #paginas="ngModel" required pattern="[0-9]{1,}">
+      <mat-error *ngIf="paginas.invalid">Digite um id valido</mat-error>
   </mat-form-field>
   <br>
-    <button mat-raised-button color='primary' (click)="onCadastrarLivro()">Cadastrar</button>
+    <button mat-raised-button color='primary'>Cadastrar</button>
+    </form>
+
 </mat-card>

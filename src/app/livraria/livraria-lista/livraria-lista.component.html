@@ -9,5 +9,9 @@
   <mat-card-content>
     <p>Quantidade de páginas: {{livro.paginas}}</p>
   </mat-card-content>
+  <mat-card-actions>
+    <button mat-button >editar</button>
+    <button mat-button >remover</button>
+  </mat-card-actions>
 </mat-card>
 <p *ngIf="livros.length<=0">Nenhum Livro Cadastrado</p>

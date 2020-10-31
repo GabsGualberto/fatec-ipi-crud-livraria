@@ -8,7 +8,6 @@ import { Livro } from './livraria/livro.model';
 })
 export class AppComponent {
   livros: Livro[] = [];
-  c
   onCadastarLivro(livro){
     console.log(livro);
       this.livros.push(livro);
