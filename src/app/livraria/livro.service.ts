@@ -17,7 +17,7 @@ export class livrosService{
       this.listaAtualizada.next([...this.livros]);
     })
   }
-  cadastrarLivro(id: number,titulo: string,autor: string,paginas: number){
+  cadastrarLivro(id: string,titulo: string,autor: string,paginas: string){
       const livro: Livro = {
         id: id,
         titulo: titulo,
