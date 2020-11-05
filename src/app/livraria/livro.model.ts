@@ -1,6 +1,7 @@
  export interface Livro{
-   id: string,
-   titulo: string,
-   autor: string,
-   paginas: string
+   id_mapeado: string;
+   id: string;
+   titulo: string;
+   autor: string;
+   paginas: string;
  }

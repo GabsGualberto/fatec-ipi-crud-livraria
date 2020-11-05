@@ -36,7 +36,8 @@ app.post('/api/livraria',(req,res, next)=>{
   .then((documento)=>{
     console.log(`Inserção ok: ${documento}`);
     res.status(201).json({
-      mensagem: 'livro inserido'
+      mensagem: 'livro inserido',
+      id: documento._id
     });
   })
   .catch((erro)=>{
@@ -50,6 +51,7 @@ app.post('/api/livraria',(req,res, next)=>{
 app.get('/api/livraria',(req, res, next)=>{
   livro.find()
   .then((documentos)=>{
+    console.log(documentos);
     res.status(200).json({
       mensagem: 'Tudo ok',
       livros: documentos
@@ -61,6 +63,14 @@ app.get('/api/livraria',(req, res, next)=>{
       mensagem:'Falhou',
       livros: []
     })
+  })
+});
+
+app.delete('/api/livraria/:id',(req,res,next)=>{
+  Livro.deleteOne({_id: req.params.id})
+  .then((resultado)=>{
+    console.log(resultado);
+    res.status(200).json({mensagem:"Cliente removido"});
   })
 });
 

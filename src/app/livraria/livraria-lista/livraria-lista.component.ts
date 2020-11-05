@@ -21,6 +21,10 @@ export class LivrariaListaComponent implements OnInit,OnDestroy {
       this.livros = livros;
     });
   }
+
+  onDelete(id: string): void{
+    this.livroService.removerLivro(id);
+  }
   ngOnDestroy(): void{
     this.livrosSubscription.unsubscribe();
   }
