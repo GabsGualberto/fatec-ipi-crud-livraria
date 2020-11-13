@@ -11,7 +11,10 @@ export class livrosService{
 
 
   constructor(private httpClient: HttpClient){ }
-
+  getLivro(idLivro: string){
+    return this.httpClient.get<{_id: string,id: string,titulo: string, autor: string,paginas: string}>(`
+    http://localhost:3000/api/livraria/${idLivro}`);
+  }
   getLivros():void{
     this.httpClient.get<{mensagem: string, livros: any}>('http://localhost:3000/api/livraria').
     pipe(map((dados => {
@@ -58,5 +61,17 @@ export class livrosService{
   }
   getListaLivrosAtualizada(){
     return this.listaAtualizada.asObservable();
+  }
+
+  atualizarLivro(id_mapeado:string,id: string,titulo: string, autor:string,paginas:string){
+    const livro: Livro = {id_mapeado,id,titulo,autor,paginas};
+    this.httpClient.put(`http://localhost:3000/api/livraria/${id_mapeado}`,livro)
+    .subscribe((res => {
+      const copia =[...this.livros];
+      const indice = copia.findIndex(li => li.id === livro.id);
+      copia[indice] = livro;
+      this.livros = copia;
+      this.listaAtualizada.next([...this.livros]);
+    }));
   }
 }

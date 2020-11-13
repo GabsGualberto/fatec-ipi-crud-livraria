@@ -21,7 +21,7 @@ const livros = [
 app.use((req,res,next)=>{
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers','Origin, X-Requested-With, Content-Type, Accept');
-  res.setHeader('Access-Control-Allow-Methods','GET, POST, PATCH, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods','GET, POST, PATCH, PUT, DELETE, OPTIONS');
   next();
 });
 
@@ -74,5 +74,30 @@ app.delete('/api/livraria/:id',(req,res,next)=>{
   })
 });
 
+app.put('/api/livraria/:id',(req, res, next)=>{
+  const livro = new Livro({
+    _id: req.params.id,
+    id: req.body.id,
+    titulo: req.body.titulo,
+    autor: req.body.autor,
+    paginas: req.body.paginas
+  });
+  Livro.updateOne({_id: req.params.id}, livro)
+  .then((resultado)=>{
+    console.log(resultado)
+  });
+  res.status(200).json({mensagem:'Atualização realizada com sucesso'})
+});
+
+app.get('/api/livraria/:id', (req, res, next)=>{
+  Livro.findById(req.params.id).then(li => {
+    if(li){
+      res.status(200).json(li);
+    }
+    else{
+      res.status(404).json({mensagem: "Cliente nao encontrado"})
+    }
+  })
+});
 
 module.exports = app;

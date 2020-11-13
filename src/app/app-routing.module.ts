@@ -5,7 +5,8 @@ import { LivrariaCadastrarComponent } from './livraria/livraria-cadastrar/livrar
 
 const routes: Routes = [
   {path: 'criar', component: LivrariaListaComponent},
-  {path: '', component: LivrariaCadastrarComponent}
+  {path: '', component: LivrariaCadastrarComponent},
+  {path: 'editar/:idLivro', component: LivrariaCadastrarComponent}
 ];
 
 @NgModule({

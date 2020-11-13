@@ -1,26 +1,26 @@
   <mat-card >
-    <form (submit)="onCadastrarLivro(livroForm)" #livroForm="ngForm">
+    <form (submit)="onSalvarLivro(livroForm)" #livroForm="ngForm">
       <mat-form-field >
-        <input type="text" matInput placeholder="id" ngModel name="id" #id="ngModel" required pattern="[0-9]{1,3}">
+        <input type="text" matInput placeholder="id" [ngModel]="livro?.id" name="id" #id="ngModel" required pattern="[0-9]{1,3}">
         <mat-error *ngIf="id.invalid">Digite um id valido</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field>
-        <input type="text" matInput placeholder="titulo"  ngModel name="titulo" #titulo="ngModel" required>
+        <input type="text" matInput placeholder="titulo"  [ngModel]="livro?.titulo" name="titulo" #titulo="ngModel" required>
         <mat-error *ngIf="titulo.invalid">Digite um titulo valido</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field >
-        <input type="text" matInput placeholder="autor"  ngModel name="autor" #autor="ngModel" required>
+        <input type="text" matInput placeholder="autor"  [ngModel]="livro?.autor" name="autor" #autor="ngModel" required>
         <mat-error *ngIf="autor.invalid">Digite um autor valido</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field >
-      <input type="text" matInput placeholder="paginas"  ngModel name="paginas" #paginas="ngModel" required pattern="[0-9]{1,}">
+      <input type="text" matInput placeholder="paginas"  [ngModel]="livro?.paginas" name="paginas" #paginas="ngModel" required pattern="[0-9]{1,}">
       <mat-error *ngIf="paginas.invalid">Digite um id valido</mat-error>
   </mat-form-field>
   <br>
-    <button mat-raised-button color='primary'>Cadastrar</button>
+    <button mat-raised-button color='primary'>Salvar Livro</button>
     </form>
 
 </mat-card>

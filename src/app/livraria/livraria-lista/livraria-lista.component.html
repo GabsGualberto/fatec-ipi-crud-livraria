@@ -10,7 +10,7 @@
     <p>Quantidade de páginas: {{livro.paginas}}</p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button >editar</button>
+    <button mat-button [routerLink]="['/editar',livro.id_mapeado]" routerLinkActive="router-link-active">editar</button>
     <button mat-button (click)="onDelete(livro.id_mapeado)" >remover</button>
   </mat-card-actions>
 </mat-card>
