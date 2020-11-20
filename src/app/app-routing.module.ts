@@ -4,8 +4,8 @@ import { LivrariaListaComponent } from './livraria/livraria-lista/livraria-lista
 import { LivrariaCadastrarComponent } from './livraria/livraria-cadastrar/livraria-cadastrar.component';
 
 const routes: Routes = [
-  {path: 'criar', component: LivrariaListaComponent},
-  {path: '', component: LivrariaCadastrarComponent},
+  {path: '', component: LivrariaListaComponent},
+  {path: 'criar', component: LivrariaCadastrarComponent},
   {path: 'editar/:idLivro', component: LivrariaCadastrarComponent}
 ];
 

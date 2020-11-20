@@ -14,3 +14,6 @@ mat-card{
 mat-card-title{
   border-bottom: solid 1px #ffffff;
 }
+mat-spinner{
+  margin: auto;
+}

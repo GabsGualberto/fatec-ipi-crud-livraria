@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map }  from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable ({providedIn: 'root'})
 export class livrosService{
@@ -10,7 +11,7 @@ export class livrosService{
   private listaAtualizada = new Subject<Livro[]>();
 
 
-  constructor(private httpClient: HttpClient){ }
+  constructor(private httpClient: HttpClient, private router: Router){ }
   getLivro(idLivro: string){
     return this.httpClient.get<{_id: string,id: string,titulo: string, autor: string,paginas: string}>(`
     http://localhost:3000/api/livraria/${idLivro}`);
@@ -46,6 +47,7 @@ export class livrosService{
           livro.id_mapeado = dados.id;
           this.livros.push(livro);
           this.listaAtualizada.next([...this.livros]);
+          this.router.navigate(['/']);
       })
 
   }
@@ -72,6 +74,8 @@ export class livrosService{
       copia[indice] = livro;
       this.livros = copia;
       this.listaAtualizada.next([...this.livros]);
+      this.router.navigate(['/']);
+
     }));
   }
 }

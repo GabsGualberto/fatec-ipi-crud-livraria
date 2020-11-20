@@ -1,23 +1,28 @@
   <mat-card >
-    <form (submit)="onSalvarLivro(livroForm)" #livroForm="ngForm">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form [formGroup]="form"(submit)="onSalvarLivro()" *ngIf="!isLoading">
       <mat-form-field >
-        <input type="text" matInput placeholder="id" [ngModel]="livro?.id" name="id" #id="ngModel" required pattern="[0-9]{1,3}">
-        <mat-error *ngIf="id.invalid">Digite um id valido</mat-error>
+        <input type="text" matInput placeholder="id" formControlName="id" name="id">
+        <mat-error *ngIf="form.get('id').invalid">Digite um id valido</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field>
-        <input type="text" matInput placeholder="titulo"  [ngModel]="livro?.titulo" name="titulo" #titulo="ngModel" required>
-        <mat-error *ngIf="titulo.invalid">Digite um titulo valido</mat-error>
+        <input type="text" matInput placeholder="titulo" formControlName="titulo" name="titulo" >
+        <mat-error *ngIf="form.get('titulo').invalid">Digite um titulo valido</mat-error>
+    </mat-form-field>
+    <br>
+    <div>
+      <button type="button" mat-stroked-button (click)="selecionaArquivo.click()">Selecionar Imagem</button>
+      <input type="file" #selecionaArquivo>
+    </div>
+    <mat-form-field >
+        <input type="text" matInput placeholder="autor" formControlName="autor" name="autor" >
+        <mat-error *ngIf="form.get('autor').invalid">Digite um autor valido</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field >
-        <input type="text" matInput placeholder="autor"  [ngModel]="livro?.autor" name="autor" #autor="ngModel" required>
-        <mat-error *ngIf="autor.invalid">Digite um autor valido</mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field >
-      <input type="text" matInput placeholder="paginas"  [ngModel]="livro?.paginas" name="paginas" #paginas="ngModel" required pattern="[0-9]{1,}">
-      <mat-error *ngIf="paginas.invalid">Digite um id valido</mat-error>
+      <input type="text" matInput placeholder="paginas" formControlName="paginas" name="paginas">
+      <mat-error *ngIf="form.get('paginas').invalid">Digite um id valido</mat-error>
   </mat-form-field>
   <br>
     <button mat-raised-button color='primary'>Salvar Livro</button>

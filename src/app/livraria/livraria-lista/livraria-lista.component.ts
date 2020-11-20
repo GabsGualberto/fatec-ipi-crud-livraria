@@ -12,12 +12,16 @@ export class LivrariaListaComponent implements OnInit,OnDestroy {
 
   livros: Livro[]=[];
   private livrosSubscription: Subscription;
+
+  public isLoading: boolean = false;
   constructor(public livroService: livrosService){ }
 
   ngOnInit(): void{
+    this.isLoading = true;
     this.livroService.getLivros();
     this.livrosSubscription = this.livroService.getListaLivrosAtualizada().
     subscribe( (livros: Livro[])=>{
+      this.isLoading = false;
       this.livros = livros;
     });
   }
